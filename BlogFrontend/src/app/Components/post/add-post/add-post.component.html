@@ -1,0 +1,49 @@
+<p>add-post works!</p>
+<div class="container">
+  <form class="w-50" #f="ngForm" (ngSubmit)="onSubmit(f.value); f.reset()">
+    <div class="form-group">
+      <label for="" class="form-label">Author</label>
+      <input type="text" class="form-control" required #au="ngModel" name="author" ngModel>
+    </div>
+    <div *ngIf="au.errors?.['required']">
+      <div class="text-danger" *ngIf="au.touched && au.pristine">
+        field required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="" class="form-label">Title</label>
+      <input type="text" class="form-control" required #title="ngModel" name="title" ngModel>
+    </div>
+    <div *ngIf="title.errors?.['required']">
+      <div class="text-danger" *ngIf="title.touched && title.pristine">
+        field required
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Category</label>
+      <select name="id_category" ngModel>
+        <option disabled value="">choose a category</option>
+        <option *ngFor="let c of categoriesArray" value="{{c.id_category}}">{{c.name}}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="" class="form-label">Content</label>
+      <input type="text" class="form-control" required #co="ngModel" name="content" ngModel>
+    </div>
+    <div *ngIf="co.errors?.['required']">
+      <div class="text-danger" *ngIf="co.touched && co.pristine">
+        field required
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="" class="form-label" >Date</label>
+      <input type="date" class="form-control" required #date="ngModel" name="date" ngModel>
+    </div>
+    <div *ngIf="date.errors?.['required']">
+      <div class="text-danger" *ngIf="date.touched && date.pristine">
+        field required
+      </div>
+    </div>
+    <button [disabled]="f.invalid" class="btn btn-primary">Submit</button>
+  </form>
+</div>

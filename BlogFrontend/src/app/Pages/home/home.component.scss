@@ -1,0 +1,30 @@
+.container-fluid{
+    background-color: #EEEDE9;
+}
+
+.landing-section{
+    height: 100vh;
+}
+
+.landing-heading{
+    text-align: center;
+    width: 630px;
+    bottom: 90px;
+    color: white;
+    font-family: 'Inter', sans-serif; 
+    font-size: 50px;
+
+}
+
+.divider{
+    width: 90%;
+    border: solid 1px rgb(0, 0, 0);
+    opacity: 0.5;
+}
+
+.post-title{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+

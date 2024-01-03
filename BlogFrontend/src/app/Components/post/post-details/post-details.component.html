@@ -1,0 +1,19 @@
+<p>post-details works!</p>
+<div>
+  post :
+<p>{{post.title}}</p>
+</div>
+<p>--------------------------------</p>
+
+  <div *ngFor="let r of relatedPosts">
+    <p>{{r.title}}</p>
+  </div>
+
+<p>--------------------------------</p>
+<div *ngIf="commentsArray">
+  <div *ngFor="let c of commentsArray">
+    <p>**</p>
+  </div>
+</div>
+<p>--------------------------------</p>
+<app-comment [comments]="commentsArray" [post_id]="post_id"></app-comment>

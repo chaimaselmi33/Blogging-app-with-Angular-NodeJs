@@ -1,0 +1,35 @@
+<p>comment works!</p>
+
+<div class="container">
+  <div>
+    <h1>Comment</h1>
+    <div *ngFor="let c of comments">
+      <p>{{c.content}}</p>
+    </div>
+  </div>
+
+
+
+  <form #f="ngForm" (ngSubmit)="onSubmit(f.value); f.reset()">
+    <div class="form-group">
+      <label class="form-label">Author</label>
+      <input type="text" class="form-control w-25" name="author" required #au="ngModel" ngModel>
+    </div>
+    <div *ngIf="au.errors?.['required']">
+      <div class="text-danger" *ngIf="au.touched && au.pristine">
+        field required
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Content</label>
+      <input type="text" class="form-control w-25" name="content" required #content="ngModel" ngModel>
+    </div>
+    <div *ngIf="content.errors?.['required']">
+      <div class="text-danger" *ngIf="content.touched && content.pristine">
+        field required
+      </div>
+    </div>
+    <br>
+    <button type="submit" [disabled]="f.invalid" class="btn bg-primary">Submit</button>
+  </form>
+</div>
