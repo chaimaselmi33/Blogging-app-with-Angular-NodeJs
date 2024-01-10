@@ -1,6 +1,6 @@
 <app-navbar></app-navbar>
 
-<div class="container-fluid px-0 pb-5">
+<div class="container-fluid px-0 pb-5 overflow-hidden">
   <div class="landing-section position-relative">
     <img
       src="assets/landing.jpeg"
@@ -15,8 +15,8 @@
   </div>
 
   <div class="latest-section pt-5 px-5">
-    <div class="row">
-      <div class="d-flex align-items-center px-0">
+    <div class="row px-3">
+      <div class="d-flex align-items-center px-0 mb-2">
         <h2 class="pe-5">Latest</h2>
         <hr class="divider" />
       </div>
@@ -27,7 +27,7 @@
           height="500px"
           alt="Image"
         />
-        <h3 class="mt-2 post-title" >
+        <h3 class="mt-2 post-title">
           On sait depuis longtemps que travailler avec du texte lisible et
           contenant du sens
         </h3>
@@ -53,10 +53,9 @@
               Qu'est-ce que le lang lorem Ipsum fait dans
             </h3>
             <P class="text-justify me-1 w-100"
-              >On sait duis longtemps que travailler avec du texte lisible et
-              contenant du sens est source de distractions, et empêche de se
-              concentrer sur la mise en page elle-même. L'avantag...</P
+              >On sait duis longtemps que lore travailler avec du texte lisible et empê... <a href="#">read more</a></P
             >
+           
             <p class="text-secondary">by Lorem ispum</p>
           </div>
         </div>
@@ -76,5 +75,13 @@
         </div>
       </div>
     </div>
+  </div>
+
+  <div class="posts px-5 mt-4">
+    <div class="d-flex align-items-center px-0 mb-2">
+      <h2 class="pe-5">Posts</h2>
+      <hr class="divider" />
+    </div>
+    <app-get-posts></app-get-posts>
   </div>
 </div>

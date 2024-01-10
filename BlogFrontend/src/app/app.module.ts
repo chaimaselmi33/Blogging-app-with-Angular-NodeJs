@@ -14,6 +14,7 @@ import { NavbarComponent } from './Components/navbar/navbar.component';
 import { FooterComponent } from './Components/footer/footer.component';
 import { HomeComponent } from './Pages/home/home.component';
 import { PostsTemplatesComponent } from './Pages/posts-templates/posts-templates.component';
+import { PostCardComponent } from './Components/post/post-card/post-card.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { PostsTemplatesComponent } from './Pages/posts-templates/posts-templates
     FooterComponent,
     HomeComponent,
     PostsTemplatesComponent,
+    PostCardComponent,
   ],
   imports: [
     BrowserModule,

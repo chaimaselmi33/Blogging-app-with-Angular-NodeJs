@@ -1,0 +1,20 @@
+.row-with-gap {
+    display: flex;
+    gap: 34px; /* Adjust the value as needed for the desired gap size */
+}
+
+.card-body{
+    background-color:#EEEDE9 ;
+}
+
+.card-title{
+    color: #263640;
+}
+
+.card-text {
+    color: #475759;
+}
+
+.card-text > a {
+    color: #E4794C;
+}
