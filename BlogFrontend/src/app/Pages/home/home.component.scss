@@ -28,11 +28,6 @@
     text-overflow: ellipsis;
 }
 
-.px-60{
-    padding-right: 50px !important;
-    padding-left: 50px !important;
-} 
-
 p{
     font-size: 24px;
     color: #475759;
@@ -41,4 +36,48 @@ p{
 p > a {
     color: #E4794C;
 }
+
+.gallery{
+    display: flex;
+    height: 500px;
+    gap: 6px;
+}
+
+.gallery > .bloc{
+    flex: 1;
+    min-width: 100px;
+    position: relative;
+    background-image:url('../../../assets/cat-two.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    object-fit: cover;
+    cursor: pointer;
+    transition: .7s;
+}
+
+.category-name{
+    z-index: 10;
+    color: #EEEDE9;
+}
+
+.overlay{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: 0.7s;
+}
+
+.gallery > .bloc:hover{
+    flex: 1.8;
+    transition: 0.7s;
+   }
+
+.bloc:hover > .overlay{
+    transition: 0.7s;
+    background: linear-gradient(90deg, rgba(90, 30, 5, 0.40) 0%, rgba(129, 51, 18, 0.38) 17.29%, rgba(166, 94, 64, 0.35) 33.96%, rgba(212, 149, 123, 0.19) 64.69%, rgba(241, 202, 185, 0.00) 100%);
+    opacity: 1;
+}
+
 
