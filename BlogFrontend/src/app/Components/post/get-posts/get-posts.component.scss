@@ -1,20 +1,12 @@
+@import "../../../../styles.scss";
+
 .row-with-gap {
     display: flex;
-    gap: 34px; /* Adjust the value as needed for the desired gap size */
+    gap: 34px; 
 }
 
-.card-body{
-    background-color:#EEEDE9 ;
+.card{
+    @include card-design();
 }
 
-.card-title{
-    color: #263640;
-}
 
-.card-text {
-    color: #475759;
-}
-
-.card-text > a {
-    color: #E4794C;
-}
