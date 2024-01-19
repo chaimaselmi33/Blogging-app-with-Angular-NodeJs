@@ -1,5 +1,7 @@
-.container-fluid{
-    background-color: #EEEDE9;
+@import "../../../styles.scss";
+
+.container-fluid{ 
+    background-color: $alabaster;
 }
 
 .landing-section{
@@ -10,7 +12,7 @@
     text-align: center;
     width: 630px;
     bottom: 90px;
-    color: #EEEDE9;
+    color: $alabaster;
     font-family: 'Inter', sans-serif; 
     font-size: 50px;
 
@@ -22,20 +24,49 @@
     opacity: 0.5;
 }
 
-.post-title{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-p{
-    font-size: 24px;
+.latest-section p{
+    font-size: 20px;
     color: #475759;
+
+    & > a{
+    color: $orange;
+}
 }
 
-p > a {
-    color: #E4794C;
+.latest-section .author-name{
+    font-size: 18px;
+    color: $black;
+    opacity: 0.7;
 }
+
+
+.post-title{
+    @include card-title;
+}
+
+.about-section .row{
+    background-color: $darkBlue;
+    color: $alabaster;
+
+    & .date{
+        color: #BABAB9;
+    }
+
+    & .about-paragraph{
+        text-align: justify; 
+        font-size: 20px;
+    }
+}
+
+.px-100{
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.p-y {
+    padding-top: 60px;
+    padding-bottom: 100px;
+  }
 
 .gallery{
     display: flex;
@@ -43,8 +74,12 @@ p > a {
     gap: 6px;
 }
 
-.gallery > .bloc{
+.gallery .bloc{
     flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
     min-width: 100px;
     position: relative;
     background-image:url('../../../assets/cat-two.jpg');
@@ -58,7 +93,7 @@ p > a {
 
 .category-name{
     z-index: 10;
-    color: #EEEDE9;
+    color: $alabaster;
 }
 
 .overlay{
@@ -69,12 +104,12 @@ p > a {
     transition: 0.7s;
 }
 
-.gallery > .bloc:hover{
+.gallery .bloc:hover{
     flex: 1.8;
     transition: 0.7s;
    }
 
-.bloc:hover > .overlay{
+.bloc:hover .overlay{
     transition: 0.7s;
     background: linear-gradient(90deg, rgba(90, 30, 5, 0.40) 0%, rgba(129, 51, 18, 0.38) 17.29%, rgba(166, 94, 64, 0.35) 33.96%, rgba(212, 149, 123, 0.19) 64.69%, rgba(241, 202, 185, 0.00) 100%);
     opacity: 1;

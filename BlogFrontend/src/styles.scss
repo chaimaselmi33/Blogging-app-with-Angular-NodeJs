@@ -5,6 +5,13 @@ $black: #263640;
 $darkBlue: #263640;
 
 //-------------mixins-------------
+@mixin card-title(){
+    color: $black;
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+} 
 
 @mixin card-design {
     min-width: 400px;
@@ -15,16 +22,21 @@ $darkBlue: #263640;
     background-color: $alabaster;
   
     & .card-title {
-      color: $black;
-      cursor: pointer;
+      @include card-title()
     }
   
     & .card-text {
       color: #475759;
-      font-size: 24px;
+      font-size: 20px;
   
       & > a {
       color: $orange;
-      }
+      } 
     }
+
+    & .author{
+      font-size: 18px;
+      color: $black;
+      opacity: 0.6;
+    } 
   }
