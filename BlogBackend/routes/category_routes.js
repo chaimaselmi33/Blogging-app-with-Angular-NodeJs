@@ -10,6 +10,7 @@ router.get('/get-all', (req, res)=>{
     let sql = "select * from category"
     dbConnection.query(sql, (err,queryResult)=> {
         res.send(queryResult)
+        console.log(queryResult)
     })
 })
 

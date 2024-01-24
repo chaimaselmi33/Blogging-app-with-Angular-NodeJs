@@ -2,11 +2,11 @@ const mysql = require('mysql8');
 
 var dbConnection = mysql.createConnection(
     {
-    host: 'localhost',
-    user: 'root',
-    password: 'Udacity33',
-    port: '3306',
-    database:'blog_db'
+    host: 'xxx',
+    user: 'xxx',
+    password: 'xxx',
+    port: 'xxx',
+    database:'xxx'
     }
 );
 
