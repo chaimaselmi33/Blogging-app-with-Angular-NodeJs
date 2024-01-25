@@ -5,7 +5,6 @@ const router = express.Router();
 
 router.post("/signIn", (req, res) => {
   const userCredentials = req.body;
-  console.log("user sent credentials", credentials);
 
   let sql = "SELECT email, password FROM users WHERE email = ?";
   let values = [userCredentials.email];
@@ -21,7 +20,6 @@ router.post("/signIn", (req, res) => {
           email: queryResult[0].email,
           password: queryResult[0].password,
         };
-
         // Check if the credentials match
         if (
           fetched_userCredentials.email === userCredentials.email &&
