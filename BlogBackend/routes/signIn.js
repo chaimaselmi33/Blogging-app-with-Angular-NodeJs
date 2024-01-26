@@ -2,6 +2,7 @@ const express = require("express");
 const dbConnection = require("../database/config.js");
 const jwt = require('jsonwebtoken')
 const router = express.Router();
+const bcrypt = require('bcrypt');
 require('dotenv').config();
 
 router.post("/signIn", (req, res) => {
@@ -20,16 +21,17 @@ router.post("/signIn", (req, res) => {
           email: queryResult[0].email,
           password: queryResult[0].password,
         };
+        
+        //compare the input password with hashed one in db
+        const isMatch = bcrypt.compareSync(userCredentials.password, fetched_userCredentials.password);
         // check if the credentials match
         if (
           fetched_userCredentials.email === userCredentials.email &&
-          fetched_userCredentials.password === userCredentials.password
+          isMatch
         ) {
           //create jwt token
           const jwtSecretKey = process.env.JWT_SECRET
-          console.log('sec key', jwtSecretKey)
           const token = jwt.sign(userCredentials, jwtSecretKey, { expiresIn: "1h" });
-          console.log('token gen : ', token)
           //res.setHeader('Authorization', token)
           res.json({ isAuth :true, token:token });
         } else {
