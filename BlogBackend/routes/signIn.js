@@ -1,7 +1,8 @@
 const express = require("express");
 const dbConnection = require("../database/config.js");
-
+const jwt = require('jsonwebtoken')
 const router = express.Router();
+require('dotenv').config();
 
 router.post("/signIn", (req, res) => {
   const userCredentials = req.body;
@@ -12,26 +13,30 @@ router.post("/signIn", (req, res) => {
   dbConnection.query(sql, values, (err, queryResult) => {
     if (err) {
       console.log(err);
-      res.status(500).send("Internal Server Error");
     } else {
-      // Check if the email exists in the database
+      // check if the email exists in the database
       if (queryResult.length > 0) {
         let fetched_userCredentials = {
           email: queryResult[0].email,
           password: queryResult[0].password,
         };
-        // Check if the credentials match
+        // check if the credentials match
         if (
           fetched_userCredentials.email === userCredentials.email &&
           fetched_userCredentials.password === userCredentials.password
         ) {
-          res.status(200).send("Correct credentials");
+          //create jwt token
+          const jwtSecretKey = process.env.JWT_SECRET
+          console.log('sec key', jwtSecretKey)
+          const token = jwt.sign(userCredentials, jwtSecretKey, { expiresIn: "1h" });
+          console.log('token gen : ', token)
+          //res.setHeader('Authorization', token)
+          res.json({ isAuth :true, token:token });
         } else {
           res.send("Incorrect email or password");
         }
       } else {
         console.log("email not found");
-        res.status(404).send("Email not found");
       }
     }
   });

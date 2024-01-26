@@ -1,20 +1,39 @@
 //loading modules
 const express = require('express');
 const dbConnection = require('../database/config.js');
-
+const jwt = require('jsonwebtoken')
+require('dotenv').config();
 const router = express.Router();
+
+//verifyJWT authorization  middleware. 
+const verifyJWT = (req, res, next) => {
+
+    const sentToken = req.headers['authorization']?.split(' ')[1];
+    if(sentToken){
+        jwt.verify(sentToken,process.env.JWT_SECRET, (err,decoded)=>{
+            if(err){
+                res.json({auth:false, message: 'Auth failed'})
+            }else{
+                console.log('Token verified successfully:', decoded);
+                next();
+            }
+        })
+    }else {
+        res.json({ auth: false, message: 'Auth failed (no token provided)' });
+    }
+}
 
 /*----------post routes------------*/
 
-//get all posts
-router.get('/get-all', (req, res) => {
+//Authentificated get all posts  request  
+router.get('/get-all',verifyJWT ,(req, res) => {
     let sql = "select * from post"
     dbConnection.query(sql, (err, queryResult) => {
         if (err) {
             console.log(err);
         }
         else {
-            res.send(queryResult)
+            res.status(200).json(queryResult);
         }
     })
 })
