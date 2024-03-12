@@ -100,9 +100,9 @@ router.get("/get-post/:id", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      //fetching category object
+      
       let post = queryResult[0];
-      //retrive all post comments
+
       dbConnection.query(
         `select * from comment where id_post = ${req.params.id}`,
         (err, rslt) => {

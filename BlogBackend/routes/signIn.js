@@ -7,8 +7,7 @@ require('dotenv').config();
 
 router.post("/signIn", (req, res) => {
   const userCredentials = req.body;
-
-  let sql = "SELECT email, password FROM users WHERE email = ?";
+  let sql = "SELECT username, email, password FROM users WHERE email = ?";
   let values = [userCredentials.email];
 
   dbConnection.query(sql, values, (err, queryResult) => {
@@ -33,12 +32,12 @@ router.post("/signIn", (req, res) => {
           const jwtSecretKey = process.env.JWT_SECRET
           const token = jwt.sign(userCredentials, jwtSecretKey, { expiresIn: "1h" });
           //res.setHeader('Authorization', token)
-          res.json({ isAuth :true, token:token });
+          res.json({ isAuth :true, token:token, userData: {username : queryResult[0].username }});
         } else {
-          res.send("Incorrect email or password");
+          res.send("Invalid email or password");
         }
       } else {
-        console.log("email not found");
+        res.send("Invalid email or password");
       }
     }
   });
