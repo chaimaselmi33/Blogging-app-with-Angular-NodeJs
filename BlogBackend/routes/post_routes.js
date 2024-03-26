@@ -5,15 +5,18 @@ const jwt = require("jsonwebtoken");
 require("dotenv").config();
 const router = express.Router();
 
-//verifyJWT authorization  middleware.
+//---------------verifyJWT authorization  middleware--------------
 const verifyJWT = (req, res, next) => {
   const sentToken = req.headers["authorization"]?.split(" ")[1];
   if (sentToken) {
     jwt.verify(sentToken, process.env.JWT_SECRET, (err, decoded) => {
       if (err) {
+        if (err.name === 'TokenExpiredError') {
+          return res.status(401).send('Token expired');
+        }
         res.json({ auth: false, message: "Auth failed" });
       } else {
-        console.log("Token verified successfully:", decoded);
+        req.user = decoded;
         next();
       }
     });
@@ -25,7 +28,7 @@ const verifyJWT = (req, res, next) => {
 /*----------post routes------------*/
 
 //Authentificated get all posts  request
-router.get("/get-all", (req, res) => {
+router.get("/get-all", verifyJWT, (req, res) => {
   let sql = "select * from post";
   dbConnection.query(sql, (err, queryResult) => {
     if (err) {
@@ -90,9 +93,6 @@ router.post("/add", (req, res) => {
     }
   });
 });
-
-//get a post by id
-
 //get a post by id
 router.get("/get-post/:id", (req, res) => {
   let sql = `select * from post where id_post = ${req.params.id}`;
@@ -150,33 +150,3 @@ router.get("/search", (req, res) => {
 
 module.exports = router;
 
-//----------------------------------------------------------------------------------------------------------------------
-/* custom get request to get cat object instead of fk id
-router.get('/get-all', (req, res) => {
-    let sql = "select * from post"
-    dbConnection.query(sql, (err, queryResult) => {
-        if (err) {
-            console.log(err);
-        }
-        else {
-            queryResult.map( elm => { 
-
-                dbConnection.query(`select * from category where id_category =${elm.id_category} `, (err, result)=>{
-                    if (err) {
-                        console.log(err);
-                    }
-                    else
-                    {
-                        //elm.id_category = result  
-                        elm.id_category = result[0]
-                        console.log(queryResult)   
-                        res.send(queryResult)              
-                    }
-                })
-            });
-            //res.send(queryResult)
-        }
-
-        
-    })
-})*/
