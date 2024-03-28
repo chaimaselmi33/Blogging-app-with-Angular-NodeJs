@@ -14,14 +14,15 @@ const verifyJWT = (req, res, next) => {
         if (err.name === 'TokenExpiredError') {
           return res.status(401).send('Token expired');
         }
-        res.json({ auth: false, message: "Auth failed" });
+        res.status(500).json('Inernal server error');
       } else {
         req.user = decoded;
         next();
       }
     });
   } else {
-    res.json({ auth: false, message: "Auth failed (no token provided)" });
+    //non valid auth
+    res.status(401).json({ auth: false, message: "Auth failed (no token provided)" });
   }
 };
 
