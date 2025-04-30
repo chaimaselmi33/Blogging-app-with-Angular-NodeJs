@@ -29,7 +29,7 @@ const verifyJWT = (req, res, next) => {
 /*----------post routes------------*/
 
 //Authentificated get all posts  request
-router.get("/get-all", verifyJWT, (req, res) => {
+router.get("/get-all", (req, res) => {
   let sql = "select * from post";
   dbConnection.query(sql, (err, queryResult) => {
     if (err) {
@@ -65,6 +65,7 @@ router.get("/category/:category", (req, res) => {
       console.log("id_cat", queryResult[0].id_category);
       if (id_cat) {
         dbConnection.query(
+          //select post that matches the category id : id_cat
           `select * from post where id_category =${id_cat}`,
           (err, result) => {
             if (err) {

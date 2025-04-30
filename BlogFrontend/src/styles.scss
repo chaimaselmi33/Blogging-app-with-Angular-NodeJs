@@ -1,5 +1,5 @@
 //Palette colors
-$alabaster : #EEEDE9;
+$alabaster : #e4e3df;
 $orange: #E4794C;
 $black: #263640;
 $darkBlue: #263640;
@@ -14,8 +14,8 @@ $darkBlue: #263640;
 } 
 
 @mixin card-design {
-    min-width: 400px;
-    max-width: 510px;
+    min-width: 450px;
+    max-width: 450px;
     overflow: hidden;
     border-radius: 2px;
     border: none;
@@ -39,4 +39,22 @@ $darkBlue: #263640;
       color: $black;
       opacity: 0.6;
     } 
-  }
+}
+
+@mixin bloc-style($bg-image) {
+  flex: 1;
+  display: flex;
+  flex-direction: column; // vertical layout
+  justify-content: flex-end; // push content to bottom
+  align-items: center;
+  text-align: center;
+  min-width: 100px;
+  position: relative;
+  background-image: url($bg-image);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  object-fit: cover;
+  cursor: pointer;
+  transition: 0.7s;
+}

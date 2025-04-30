@@ -45,7 +45,7 @@
 }
 
 .about-section .row{
-    background-color: $darkBlue;
+    background-color: $black;
     color: $alabaster;
 
     & .date{
@@ -74,22 +74,20 @@
     gap: 6px;
 }
 
-.gallery .bloc{
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    min-width: 100px;
-    position: relative;
-    background-image:url('../../../assets/cat-two.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    object-fit: cover;
-    cursor: pointer;
-    transition: .7s;
-}
+.gallery {
+    .green-building {
+      @include bloc-style('../../../assets/cat-one.jpg');
+    }
+   .urban-gardens {
+        @include bloc-style('../../../assets/cat-two.jpg');
+    }
+    .eco-cities {
+        @include bloc-style('../../../assets/cat-three.jpg');
+    }
+    .eco-innovations {
+      @include bloc-style('../../../assets/cat-four.jpg');
+    }
+ }
 
 .category-name{
     z-index: 10;
@@ -111,8 +109,16 @@
 
 .bloc:hover .overlay{
     transition: 0.7s;
-    background: linear-gradient(90deg, rgba(90, 30, 5, 0.40) 0%, rgba(129, 51, 18, 0.38) 17.29%, rgba(166, 94, 64, 0.35) 33.96%, rgba(212, 149, 123, 0.19) 64.69%, rgba(241, 202, 185, 0.00) 100%);
+    background: linear-gradient(90deg, rgba(41, 50, 59, 0.4) 0%, rgba(71, 86, 98, 0.38) 17.29%, rgba(43, 88, 107, 0.35) 33.96%, rgba(77, 98, 134, 0.19) 64.69%, rgba(185, 215, 241, 0) 100%);
     opacity: 1;
+}
+
+.clamp-paragraph {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 

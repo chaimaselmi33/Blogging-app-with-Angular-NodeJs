@@ -1,7 +1,7 @@
 <app-navbar></app-navbar>
 
 <div class="container-fluid px-0 pb-5 overflow-hidden">
-  <div class="landing-section">
+  <div class="landing-section" id="home">
     <img
       src="assets/landing.jpeg"
       alt="Landing Image"
@@ -28,10 +28,10 @@
           alt="Image"
         />
         <h3 class="mt-2 post-title">
-          On sait depuis longtemps que travailler avec du texte lisible et
-          contenant du sens
+          The Art of Green Houses: Aesthetic Brilliance in Futuristic
+          Sustainable Architecture
         </h3>
-        <p class="author-name">by Lorem ispum cefffefe</p>
+        <p class="author-name">By Racha Mkadem</p>
       </div>
       <div
         class="col-5 px-0 ps-5 d-flex flex-column align-items-stretch justify-content-between"
@@ -50,14 +50,15 @@
             style="max-width: 370px; overflow: hidden"
           >
             <h3 class="post-title">
-              Qu'est-ce que le lang lorem Ipsum fait dans
+              Renewable Revolutions : Clean Energy Arch ...
             </h3>
-            <P class="text-justify me-1 w-100"
-              >On sait duis longtemps que lore travailler avec du texte lisible
-              et empê... <a href="#">read more</a></P
+            <P class="text-justify me-1 w-100 clamp-paragraph">
+              Embark on a journey through the intersection between the nature
+              and
+              <a href="#">read more</a></P
             >
 
-            <p class="author-name">by Lorem ispum</p>
+            <p class="author-name">By Aymen Salem</p>
           </div>
         </div>
         <div>
@@ -69,16 +70,16 @@
           />
           <div class="d-flex flex-nowrap">
             <h3 class="mt-2 post-title">
-              On sait depuis longtemps que travailler avec du coenerngerg
+              Nature's Blueprint: The Principles of Biophilic Green Design
             </h3>
           </div>
-          <p class="author-name">by Lorem ispum</p>
+          <p class="author-name">By Taissir Jaziri</p>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="posts px-5 mt-4">
+  <div class="posts px-5 my-4" id="topics">
     <div class="d-flex align-items-center px-0 mb-2">
       <h2 class="pe-5">Posts</h2>
       <hr class="divider" />
@@ -87,11 +88,15 @@
   </div>
 
   <div
-    class="video-section bg-light"
-    style="height: 400px; margin-bottom: 80px"
-  ></div>
+    class="video-section py-5 bg"
+  >
+    <video width="100%" height="auto" autoplay muted>
+      <source src="assets/archiVid.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
 
-  <div class="about-section py-4 position-relative px-5">
+  <div class="about-section py-5 position-relative px-5" id="about">
     <div class="row mx-0 mt-2 mb-5">
       <div class="col-6 px-100 p-y">
         <h1 class="about-heading">About ArchiBlog</h1>
@@ -125,26 +130,24 @@
     </div>
 
     <div class="gallery">
-      <div class="bloc">
-        <h3 class="category-name">Sustainble Architecture</h3>
+      <div class="bloc green-building">
+        <h3 class="category-name">Green Building Design</h3>
         <div class="overlay"></div>
       </div>
-      <div class="bloc">
-        <h3 class="category-name">Sustainble Architecture</h3>
+      <div class="bloc urban-gardens">
+        <h3 class="category-name">Urban Gardens</h3>
         <div class="overlay"></div>
       </div>
-      <div class="bloc">
-        <h3 class="category-name">Sustainble Architecture</h3>
+      <div class="bloc eco-cities">
+        <h3 class="category-name">Eco-Cities</h3>
         <div class="overlay"></div>
       </div>
-      <div class="bloc">
-        <h3 class="category-name">Sustainble Architecture</h3>
-        <div class="overlay"></div>
-      </div>
-      <div class="bloc">
-        <h3 class="category-name">Sustainble Architecture</h3>
+      <div class="bloc eco-innovations">
+        <h3 class="category-name">Eco Innovations</h3>
         <div class="overlay"></div>
       </div>
     </div>
   </div>
 </div>
+
+<app-footer></app-footer>

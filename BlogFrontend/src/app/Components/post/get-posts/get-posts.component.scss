@@ -1,9 +1,9 @@
 @import "../../../../styles.scss";
 
-.row-with-gap {
-    display: flex;
-    gap: 34px; 
-}
+/*.row-with-gap {
+    display: flex; 
+    gap: 10pxm;             
+}*/
 
 .card{
     @include card-design();
