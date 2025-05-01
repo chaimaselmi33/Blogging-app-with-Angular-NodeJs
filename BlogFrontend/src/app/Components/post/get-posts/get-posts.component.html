@@ -1,19 +1,15 @@
 <div class="row mx-0">
   <div *ngFor="let p of posts" class="col-4 px-0">
     <div class="card">
-        <img
-        class="mx-auto object-fit-cover"
-        src="assets/card.jpg"
-        alt="card"
-        height="450"
-        width="450"
-      />
+      <div class="card-img-wrapper">
+        <img class="card-img" src={{p.post_Img}} alt="card" />
+      </div>
       <div class="card-body px-0">
-        <h3 class="card-title">{{p.title}}</h3>
+        <h3 class="card-title">{{ p.title }}</h3>
         <p class="card-text mb-1">
-          {{p.content}} ...<a href="#"> read more </a>
+          {{ p.content }} ...<a href="#"> read more </a>
         </p>
-        <p class="mb-0 author">{{p.author}}</p>
+        <p class="mb-0 author">{{ p.author }}</p>
       </div>
     </div>
   </div>

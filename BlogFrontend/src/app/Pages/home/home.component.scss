@@ -15,7 +15,6 @@
     color: $alabaster;
     font-family: 'Inter', sans-serif; 
     font-size: 50px;
-
 }
 
 .divider{
@@ -76,16 +75,16 @@
 
 .gallery {
     .green-building {
-      @include bloc-style('../../../assets/cat-one.jpg');
+      @include bloc-style('../../../assets/one.jpg');
     }
    .urban-gardens {
-        @include bloc-style('../../../assets/cat-two.jpg');
+        @include bloc-style('../../../assets/two.jpg');
     }
     .eco-cities {
-        @include bloc-style('../../../assets/cat-three.jpg');
+        @include bloc-style('../../../assets/three.png');
     }
     .eco-innovations {
-      @include bloc-style('../../../assets/cat-four.jpg');
+      @include bloc-style('../../../assets/four.png');
     }
  }
 
@@ -115,7 +114,7 @@
 
 .clamp-paragraph {
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
