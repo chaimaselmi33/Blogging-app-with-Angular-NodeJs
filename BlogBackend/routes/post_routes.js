@@ -11,10 +11,10 @@ const verifyJWT = (req, res, next) => {
   if (sentToken) {
     jwt.verify(sentToken, process.env.JWT_SECRET, (err, decoded) => {
       if (err) {
-        if (err.name === 'TokenExpiredError') {
-          return res.status(401).send('Token expired');
+        if (err.name === "TokenExpiredError") {
+          return res.status(401).send("Token expired");
         }
-        res.status(500).json('Inernal server error');
+        res.status(500).json("Inernal server error");
       } else {
         req.user = decoded;
         next();
@@ -22,7 +22,9 @@ const verifyJWT = (req, res, next) => {
     });
   } else {
     //non valid auth
-    res.status(401).json({ auth: false, message: "Auth failed (no token provided)" });
+    res
+      .status(401)
+      .json({ auth: false, message: "Auth failed (no token provided)" });
   }
 };
 
@@ -33,19 +35,19 @@ router.get("/get-all", (req, res) => {
   let sql = "select * from post";
   dbConnection.query(sql, (err, queryResult) => {
     if (err) {
-      console.log(err);
+      return res.status(500).json({ message: "Server error" });
     } else {
-      queryResult.map((post, index) => {
-        let sql = `select * from category where id_category = ${post.id_category}`;
-        dbConnection.query(sql, (err, rslt) => {
-          post['category'] = post['id_category'];
-          delete post.id_category
-          post.category = rslt[0];
-          if (index == queryResult.length - 1) {
-            res.status(200).json(queryResult)
-          }
-        });
+
+      queryResult.map((post) => {
+        if (post.post_Img) {
+          const base64Img = Buffer.from(post.post_Img).toString("base64");
+          post.post_Img = `data:image/jpeg;base64, ${base64Img}`;
+        } else {
+          post.post_Img = null;
+        }
+        return post;
       });
+      res.status(200).json(queryResult);
     }
   });
 });
@@ -102,7 +104,6 @@ router.get("/get-post/:id", (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      
       let post = queryResult[0];
 
       dbConnection.query(
@@ -151,4 +152,3 @@ router.get("/search", (req, res) => {
 });
 
 module.exports = router;
-
